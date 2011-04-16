@@ -2,15 +2,24 @@
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
-alias ls='ls --color=auto'
+# Terminal prompt
 PS1='[\u@\h \W]\$ '
 
-alias ll='ls --color=auto -l'
-alias la='ls --color=auto -a'
-alias lx='ls --color=auto -la'
-alias ld='ls --color=auto -ld'
+# Some handy aliases
+alias ls='ls --color=auto'
+alias ll='ls --color=auto -lh'
+alias la='ls --color=auto -ah'
+alias dir='ls --color=auto -lha'
 
-alias ncmpc='ncmpc -c'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias rd="$HOME/code/rd/rd"
+
+alias gterm='gnome-terminal'
+alias Gterm='gnome-terminal --maximize'
+
+alias vimes="$HOME/script/vimes"
 
 # Go straight from console login to X11 environment
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
@@ -18,8 +27,5 @@ if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
      logout
 fi
 
-export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/usr/local/bin:$HOME/bin"
 
-# Launch some programs in the background
-if [[ -z $(pidof btpd) ]]; then btpd; fi
-if [[ -z $(pidof mpd) ]]; then mpd; fi

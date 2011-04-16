@@ -1,0 +1,15 @@
+
+" QMarks 
+silent qmark s chrome://sqlitemanager/content/sqlitemanager.xul
+silent qmark c http://www.google.com/calendar/render
+silent qmark g http://geoip.co.uk/
+silent qmark m http://mail.google.com/mail/
+silent qmark t http://www.twitter.com/
+silent qmark h http://github.com/
+silent qmark H http://github.com/OneRing/
+
+" SQLiteManager 
+command! -nargs=+ description='SQLite Database Manager' sqlitemanager tabopen chrome://sqlitemanager/content/sqlitemanager.xul
+
+autocmd LocationChange .* js modes.passAllKeys = /(mail)\.google\.com/.test(buffer.URL)
+
