@@ -19,15 +19,17 @@ set hidden                    " Let us move between buffers without writing them
 set softtabstop=4             " Vim sees 4 spaces as a tab
 set shiftwidth=4              " < and > uses spaces
 set expandtab                 " Tabs mutate into spaces
-set foldmethod=indent         " Default folding
+set foldmethod=marker         " Default folding
 
 " Tab are syntactically important in Makefiles, so do not remove them
 autocmd FileType make setlocal noexpandtab
 
-" Movement between tabs OR buffers
+" Movement between tabs OR buffers 
 nnoremap L :call MyNext()
 nnoremap H :call MyPrev()
 
+" Custom functions {{{1
+" Movement between tabs OR buffers {{{2
 function! MyNext()
      if exists( '*tabpagenr' ) && tabpagenr('$') != 1
           " Tab support && tabs open
@@ -45,7 +47,7 @@ function! MyPrev()
           " No tab support, or no tabs open
           execute ":bprev"
      endif
-endfunction
+endfunction " 2}}}  1}}}
 
 
 
